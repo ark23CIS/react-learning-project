@@ -1,18 +1,35 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
 import AppBar from 'material-ui/AppBar';
-import { Button} from '@material-ui/core';
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import '../index.css'
+import { IconButton } from 'material-ui';
+import { white } from 'material-ui/styles/colors';
 
-export default class Navbar extends React.Component {
-    render() {
+const RightMenu = () => (
+    <IconMenu
+        iconButtonElement={
+            <IconButton>
+                <MoreVertIcon color = {white}/>
+            </IconButton>
+        }
+    >
+        <MenuItem primaryText = "Profile" />
+        <MenuItem primaryText = "Sign out" />
+    </IconMenu>
+)
+
+const Navbar = (props) => {
         return(
-            <AppBar>
-                <Button href="/" className = "buttons">Home</Button>
-                <Button href="/auth/signin" className = "buttons">Login</Button>
+            <AppBar
+                title = "Daniels app"
+                style = { {background: '#00b0ff'} }
+                iconElementRight = {<RightMenu />}
+                onLeftIconButtonClick = {() => props.onLeftIconClick()}
+             >
             </AppBar>
         )
-    }
 }
     // <nav>
         // <Link to = "/">Home</Link>
@@ -20,3 +37,4 @@ export default class Navbar extends React.Component {
         // <Link to = "/auth/signup">Sign up</Link>
         // <Link to = "/">Sign out</Link>
     // <nav>
+export default Navbar;
