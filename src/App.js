@@ -6,6 +6,8 @@ import Error from './components/Error';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import AppDrawer from './components/AppDrawer'
+import Contact from './components/Contact';
+import About from './components/About';
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +26,8 @@ class App extends Component {
               <Route path = "/" exact component = {Home}></Route>
               <Route path = "/auth/signin/" component = {Signin}></Route>
               <Route path = "/auth/signup/" component = {Signup}></Route>
+              <Route path = "/contact-us/" component = {Contact}></Route>
+              <Route path = "/about-us/" component = {About}></Route>
               <Route component = { Error }></Route>
             </Switch>
           </div>
