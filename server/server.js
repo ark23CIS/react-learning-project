@@ -15,9 +15,10 @@ mongoose.connect(mongoURI, {
 .then(() => console.log('mongoDB connected'))
 .catch((err) => console.log(err))
 
-app.get('/', (req, res) => {
-    res.send('HELLO');
-})
+app.use('/api/users', require('./routes/api/users'))
+app.use('/api/auth', require('./routes/api/auth'))
+app.use('/api/profile', require('./routes/api/profile'))
+app.use('/api/posts', require('./routes/api/posts'))
 
 app.listen(PORT, () => {
     console.log(`server listening at ${PORT} port`);
