@@ -1,3 +1,4 @@
 {
-    "mongoURI" : "mongodb://localhost/january-project"
+    "mongoURI" : "mongodb://localhost/january-project",
+    "secret" : "danilasSecret"
 }
