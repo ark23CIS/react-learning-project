@@ -4,7 +4,9 @@ class Signin extends React.Component {
     render() {
         return(
             <div>
-                Signin page
+                <form>
+                    <input type = "password"></input>
+                </form>
             </div>
         );
     };
