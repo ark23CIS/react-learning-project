@@ -16,32 +16,8 @@ router.get('/my', auth, async (req,res) => {
     }
 })
 
-router.post('/', [
-    auth, [
-        check['role', 'The role of your profile is required']
-        .not()
-        .isEmpty()
-    ]
-], async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) 
-        return res.status(400).json({ errors: errors.array()})
-    const { role } = req.body;
-    const profile = {};
-    profile.user = req.user.id;
-    profile.role = role;
-    try {
-        let prof = await Profile.findOne(req.user.id);
-        if (prof) {
-            profile = await Profile.findOneAndUpdate({user : req.user.id}, { $set: { profileData: profile } }, {new: true})
-            return res.json(profile);
-        }
-        const prof = new Profile(profile);
-        await prof.save();
-        return res.json(prof);
-    } catch (err) {
-        res.status(500).send('Server issues');
-    }
+router.post('/', auth, async (req, res) => {
+    
 })
 
 router.get('/users', async (req,res) => {
