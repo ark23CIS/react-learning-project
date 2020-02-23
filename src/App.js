@@ -8,6 +8,8 @@ import Signup from './components/Signup';
 import AppDrawer from './components/AppDrawer'
 import Contact from './components/Contact';
 import About from './components/About';
+import { Provider } from 'react-redux';
+import store from './store';
 
 class App extends Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class App extends Component {
   }
   render() {
     return (
+      <Provider store = {store} >
         <Router>
           <div>
             <Navbar onLeftIconClick = {() => this.setState({isDrawerOpen: true})}/>
@@ -32,6 +35,7 @@ class App extends Component {
             </Switch>
           </div>
         </Router>
+        </Provider>
     );
   }
 }
